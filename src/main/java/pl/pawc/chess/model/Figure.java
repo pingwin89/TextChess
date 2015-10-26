@@ -1,11 +1,11 @@
 package pl.pawc.chess.model;
 
-public class Pawn{
+public class Figure{
 	private int x;
 	private int y;
 	private int moveCounter;
 
-	public Pawn(int x, int y){
+	public Figure(int x, int y){
 	this.x=x;
 	this.y=y;
 	moveCounter=0;
