@@ -4,11 +4,13 @@ public class Figure{
 	private int x;
 	private int y;
 	private int moveCounter;
+	private String color;
 
-	public Figure(int x, int y){
+	public Figure(int x, int y, String color){
 	this.x=x;
 	this.y=y;
 	moveCounter=0;
+	this.color=color;
 	}
 
 	public int getX(){
@@ -25,6 +27,10 @@ public class Figure{
 
 	public void setY(int y){
 	this.y=y;
+	}
+	
+	public String getColor(){
+	return color;
 	}
 	
 }
