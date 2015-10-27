@@ -1,5 +1,7 @@
 package pl.pawc.chess;
 
+import java.util.Scanner;
+
 import org.fusesource.jansi.AnsiConsole;
 
 import pl.pawc.chess.model.Board;
@@ -11,7 +13,19 @@ public class Start{
   public static void main(String[] args){
     Board board = new Board();
     board.printOut();
+    Scanner s = new Scanner(System.in);
+
+while(true){
+	String input = s.nextLine();
+	if("Q".equals(input)) break;
+	try{
+	board.move(Integer.parseInt(input.split(",")[0]), Integer.parseInt(input.split(",")[1]), Integer.parseInt(input.split(",")[2]), 
+		Integer.parseInt(input.split(",")[3]));
+	}
+	catch(Exception e){ logNormal("Can't parse input");}
+
   }
+}
   
   public static void logRed(String string){
 	  AnsiConsole.systemInstall();
