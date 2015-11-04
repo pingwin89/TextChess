@@ -50,6 +50,7 @@ while(true){
 	}
 
 	board.move(x1,y1,x2,y2);
+	board.printOut();
 	}
 	catch(Exception e){
 		logNormal("Error: "+e.toString()+"\n");
