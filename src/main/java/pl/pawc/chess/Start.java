@@ -24,7 +24,11 @@ while(true){
 	int y1 = Integer.parseInt(input.split(">")[0].split(",")[1]); 
 	int x2 = Integer.parseInt(input.split(">")[1].split(",")[0]);
 	int y2 = Integer.parseInt(input.split(">")[1].split(",")[1]);
-	
+
+	if(board.getBoard()[x1][y1]==null){
+	Start.logNormal("There is no figure in this field\n");
+	continue;	
+	}
 	if((board.getBoard()[x1][y1] instanceof Knight)&&!Knight.isMoveValid(x1,y1,x2,y2)) continue;
 	board.move(x1,y1,x2,y2);
 	
