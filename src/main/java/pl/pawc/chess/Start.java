@@ -5,6 +5,7 @@ import java.util.Scanner;
 import org.fusesource.jansi.AnsiConsole;
 
 import pl.pawc.chess.model.Board;
+import pl.pawc.chess.model.Knight;
 
 import static org.fusesource.jansi.Ansi.*;
 import static org.fusesource.jansi.Ansi.Color.*;
@@ -24,6 +25,7 @@ while(true){
 	int x2 = Integer.parseInt(input.split(">")[1].split(",")[0]);
 	int y2 = Integer.parseInt(input.split(">")[1].split(",")[1]);
 	
+	if((board.getBoard()[x1][y1] instanceof Knight)&&!Knight.isMoveValid(x1,y1,x2,y2)) continue;
 	board.move(x1,y1,x2,y2);
 	
 	}

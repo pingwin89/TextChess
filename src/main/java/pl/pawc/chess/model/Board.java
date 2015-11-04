@@ -31,6 +31,10 @@ public class Board {
 		board[7][4] = new Queen(7,4, "BLUE");
 	}
 	
+	public Figure[][] getBoard(){
+		return board;
+	}
+
 	public void printOut(){
 		for(int i=0; i<8; i++){
 			for(int j=0; j<8; j++){
