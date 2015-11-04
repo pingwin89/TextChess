@@ -19,8 +19,10 @@ while(true){
 	String input = s.nextLine();
 	if("Q".equals(input)) break;
 	try{
-	board.move(Integer.parseInt(input.split(",")[0]), Integer.parseInt(input.split(",")[1]), Integer.parseInt(input.split(",")[2]), 
-		Integer.parseInt(input.split(",")[3]));
+	board.move(Integer.parseInt(input.split(">")[0].split(",")[0]), 
+		Integer.parseInt(input.split(">")[0].split(",")[1]), 
+		Integer.parseInt(input.split(">")[1].split(",")[0]),
+		Integer.parseInt(input.split(">")[1].split(",")[1]));
 	}
 	catch(Exception e){ logNormal("Can't parse input");}
 

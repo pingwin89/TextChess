@@ -6,4 +6,6 @@ public class Rook extends Figure {
 		super(x, y, color);
 	}
 
+	@Override public boolean isMoveValid(int x1, int y1, int x2, int y2){return true;}
+
 }
