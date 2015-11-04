@@ -19,10 +19,13 @@ while(true){
 	String input = s.nextLine();
 	if("Q".equals(input)) break;
 	try{
-	board.move(Integer.parseInt(input.split(">")[0].split(",")[0]), 
-		Integer.parseInt(input.split(">")[0].split(",")[1]), 
-		Integer.parseInt(input.split(">")[1].split(",")[0]),
-		Integer.parseInt(input.split(">")[1].split(",")[1]));
+	int x1 = Integer.parseInt(input.split(">")[0].split(",")[0]); 
+	int y1 = Integer.parseInt(input.split(">")[0].split(",")[1]); 
+	int x2 = Integer.parseInt(input.split(">")[1].split(",")[0]);
+	int y2 = Integer.parseInt(input.split(">")[1].split(",")[1]);
+	
+	board.move(x1,y1,x2,y2);
+	
 	}
 	catch(Exception e){ logNormal("Can't parse input");}
 

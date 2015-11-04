@@ -1,6 +1,6 @@
 package pl.pawc.chess.model;
 
-public abstract class Figure{
+public class Figure{
 	private int x;
 	private int y;
 	private int moveCounter;
@@ -12,8 +12,6 @@ public abstract class Figure{
 	moveCounter=0;
 	this.color=color;
 	}
-
-	public abstract boolean isMoveValid(int x1, int y1, int x2, int y2);
 	
 	public int getX(){
 	return x;
