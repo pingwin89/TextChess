@@ -6,13 +6,17 @@ import org.fusesource.jansi.AnsiConsole;
 
 import pl.pawc.chess.model.Board;
 import pl.pawc.chess.model.Knight;
+import pl.pawc.chess.model.Rook;
 
 import static org.fusesource.jansi.Ansi.*;
 import static org.fusesource.jansi.Ansi.Color.*;
 
 public class Start{
+	
+    private static Board board;
+
   public static void main(String[] args){
-    Board board = new Board();
+    board = new Board();
     board.printOut();
     Scanner s = new Scanner(System.in);
 
@@ -39,6 +43,12 @@ while(true){
 	Start.logNormal("Invalid move for the a knight figure. Try again\n");
 	continue;
 	}
+
+	if((board.getBoard()[x1][y1] instanceof Rook)&&!Rook.isMoveValid(x1,y1,x2,y2,board)){
+	Start.logNormal("Invalid move for the rook figure. Try again\n");
+	continue;
+	}
+
 	board.move(x1,y1,x2,y2);
 	}
 	catch(Exception e){
