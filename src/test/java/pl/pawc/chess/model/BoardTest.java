@@ -18,6 +18,8 @@ public class BoardTest extends TestCase{
     public void testBoard(){
 	Board board = new Board();
 	assertNotNull(board);
+	assertTrue(board.getBoard() instanceof Figure[][]);
+	assertNotNull(board.getBoard());
     }
 
 }
