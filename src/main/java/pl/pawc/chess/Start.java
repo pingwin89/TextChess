@@ -26,14 +26,24 @@ while(true){
 	int y2 = Integer.parseInt(input.split(">")[1].split(",")[1]);
 
 	if(board.getBoard()[x1][y1]==null){
-	Start.logNormal("There is no figure in this field\n");
-	continue;	
+		Start.logNormal("There is no figure in this field\n");
+		continue;	
 	}
-	if((board.getBoard()[x1][y1] instanceof Knight)&&!Knight.isMoveValid(x1,y1,x2,y2)) continue;
+
+	if((board.getBoard()[x2][y2]!=null)&&(board.getBoard()[x1][y1].getColor().equals(board.getBoard()[x2][y2].getColor()))){
+		Start.logNormal("Cant beat your own figure\n");
+		continue;
+	}
+
+	if((board.getBoard()[x1][y1] instanceof Knight)&&!Knight.isMoveValid(x1,y1,x2,y2)){
+	Start.logNormal("Invalid move for the a knight figure. Try again\n");
+	continue;
+	}
 	board.move(x1,y1,x2,y2);
-	
 	}
-	catch(Exception e){ logNormal("Can't parse input");}
+	catch(Exception e){
+		logNormal("Error: "+e.toString()+"\n");
+	}
 
   }
 }

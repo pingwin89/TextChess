@@ -36,6 +36,7 @@ public class Board {
 	}
 
 	public void printOut(){
+		Start.logNormal("\n");
 		Start.logNormal(" 01234567\n");
 		for(int i=0; i<8; i++){
 			for(int j=0; j<8; j++){
@@ -60,8 +61,9 @@ public class Board {
 					Start.logNormal("-");
 				}
 			}
-		System.out.println();
+		Start.logNormal("\n");
 		}
+	Start.logNormal("\n");
 	}
 
 	public void move(int x1, int y1, int x2, int y2){
