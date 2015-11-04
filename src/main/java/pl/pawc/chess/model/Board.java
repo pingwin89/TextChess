@@ -36,8 +36,10 @@ public class Board {
 	}
 
 	public void printOut(){
+		Start.logNormal(" 01234567\n");
 		for(int i=0; i<8; i++){
 			for(int j=0; j<8; j++){
+				if(j==0) Start.logNormal(Integer.toString(i));
 				if(board[i][j] != null ){
 
 					if(board[i][j] instanceof Pawn) if(board[i][j].getColor().equals("RED")) Start.logRed("P"); 
