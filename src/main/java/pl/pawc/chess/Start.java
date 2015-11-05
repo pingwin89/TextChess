@@ -8,6 +8,7 @@ import pl.pawc.chess.model.Board;
 import pl.pawc.chess.model.Knight;
 import pl.pawc.chess.model.Rook;
 import pl.pawc.chess.model.Bishop;
+import pl.pawc.chess.model.Pawn;
 
 import static org.fusesource.jansi.Ansi.*;
 import static org.fusesource.jansi.Ansi.Color.*;
@@ -40,8 +41,13 @@ while(true){
 		continue;
 	}
 
+	if((board.getBoard()[x1][y1] instanceof Pawn)&&!((Pawn) board.getBoard()[x1][y1]).isMoveValid(x1,y1,x2,y2,board)){
+	Start.logNormal("Invalid move for the pawn figure. Try again\n");
+	continue;
+	}
+
 	if((board.getBoard()[x1][y1] instanceof Knight)&&!Knight.isMoveValid(x1,y1,x2,y2)){
-	Start.logNormal("Invalid move for the a knight figure. Try again\n");
+	Start.logNormal("Invalid move for the knight figure. Try again\n");
 	continue;
 	}
 
