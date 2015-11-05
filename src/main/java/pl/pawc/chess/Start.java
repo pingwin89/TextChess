@@ -7,6 +7,7 @@ import org.fusesource.jansi.AnsiConsole;
 import pl.pawc.chess.model.Board;
 import pl.pawc.chess.model.Knight;
 import pl.pawc.chess.model.Rook;
+import pl.pawc.chess.model.Bishop;
 
 import static org.fusesource.jansi.Ansi.*;
 import static org.fusesource.jansi.Ansi.Color.*;
@@ -46,6 +47,11 @@ while(true){
 
 	if((board.getBoard()[x1][y1] instanceof Rook)&&!Rook.isMoveValid(x1,y1,x2,y2,board)){
 	Start.logNormal("Invalid move for the rook figure. Try again\n");
+	continue;
+	}
+
+	if((board.getBoard()[x1][y1] instanceof Bishop)&&!Bishop.isMoveValid(x1,y1,x2,y2,board)){
+	Start.logNormal("Invalid move for the bishop figure. Try again\n");
 	continue;
 	}
 
