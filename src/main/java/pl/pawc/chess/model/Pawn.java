@@ -11,10 +11,19 @@ public class Pawn extends Figure {
 			case "BLUE" : 
 				if(x1<=x2) return false;
 				if(((x1-x2)==2)&&x1!=6) return false;
-				if(((x1-x2)>2)||((y2-y1)>1)) return false;
-				if((Math.abs(x1-x2)==1)&&(y1==y2)&&board.getBoard()[x2][y2]!=null) return false;
+				if(((x1-x2)>2)||(Math.abs(y2-y1)>1)) return false;
+				if(((x1-x2)==1)&&(y1==y2)&&board.getBoard()[x2][y2]!=null) return false;
+				if(((x1-x2)==1)&&(Math.abs(y2-y1)==1)&&board.getBoard()[x2][y2]==null) return false;
 				break;
-		}		
+				
+			case "RED" :
+				if(x1>=x2) return false;
+				if(((x2-x1)==2)&&x1!=1) return false;
+				if(((x2-x1)>2)||(Math.abs(y2-y1)>1)) return false;
+				if(((x2-x1)==1)&&(y1==y2)&&board.getBoard()[x2][y2]!=null) return false;
+				if(((x2-x1)==1)&&(Math.abs(y2-y1)==1)&&board.getBoard()[x2][y2]==null) return false;
+				break;	
+		}
 		return true;
 	}
 }

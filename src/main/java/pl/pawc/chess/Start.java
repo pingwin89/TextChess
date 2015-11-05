@@ -19,12 +19,17 @@ public class Start{
 
   public static void main(String[] args){
     board = new Board();
-    board.printOut();
     Scanner s = new Scanner(System.in);
 
+    logNormal("\nWelcome to TextChess!\nInput format: a,b>c,d for moving a figure from (a,b) to (c,d). For example: 6,4>5,4\n");
+    logNormal("Type 'quit' to exit\n\n");
+
+    board.printOut();
+
 while(true){
+	logNormal("# ");
 	String input = s.nextLine();
-	if("Q".equals(input)) break;
+	if("quit".equals(input)) break;
 	try{
 	int x1 = Integer.parseInt(input.split(">")[0].split(",")[0]); 
 	int y1 = Integer.parseInt(input.split(">")[0].split(",")[1]); 
