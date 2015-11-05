@@ -37,7 +37,7 @@ public class Board {
 
 	public void printOut(){
 		//Start.logNormal("\n");
-		Start.logNormal("  01234567\n");		
+		Start.logNormal("  0 1 2 3 4 5 6 7\n");		
 		for(int i=0; i<8; i++){
 			for(int j=0; j<8; j++){
 				if(j==0) Start.logNormal(Integer.toString(i)+" ");
@@ -60,6 +60,7 @@ public class Board {
 				else{
 					Start.logNormal("-");
 				}
+				Start.logNormal(" ");
 			}
 		Start.logNormal("\n");
 		}
