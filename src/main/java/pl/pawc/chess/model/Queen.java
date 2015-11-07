@@ -9,7 +9,7 @@ public class Queen extends Figure{
 	public static boolean isMoveValid(int x1, int y1, int x2, int y2, Board board){
 
 	if(( (x1-x2)==0)&&((y1-y2)==0)) return false;
-	if((x1!=x2)&&(y1!=y2)&&(Double.compare(Math.abs(x1-x2), Math.abs(y1-y2))!=0))) return false;
+	if((x1!=x2)&&(y1!=y2)&&(Double.compare(Math.abs(x1-x2), Math.abs(y1-y2))!=0)) return false;
 
 	//rook
 
