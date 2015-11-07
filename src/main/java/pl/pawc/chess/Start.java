@@ -5,6 +5,7 @@ import java.util.Scanner;
 import org.fusesource.jansi.AnsiConsole;
 
 import pl.pawc.chess.model.Board;
+import pl.pawc.chess.model.King;
 import pl.pawc.chess.model.Knight;
 import pl.pawc.chess.model.Rook;
 import pl.pawc.chess.model.Bishop;
@@ -22,7 +23,7 @@ public class Start{
     board = new Board();
     Scanner s = new Scanner(System.in);
 
-    logNormal("\nWelcome to TextChess!\nInput format: a,b>c,d for moving a figure from (a,b) to (c,d). For example: 6,4>5,4\n");
+    logNormal("\nWelcome to TextChess!\nInput format: a,b>c,d for moving a figure from (a,b) to (c,d), where (row, column). For example: 6,4>5,4\n");
     logNormal("Type 'quit' to exit\n\n");
 
     board.printOut();
@@ -69,6 +70,11 @@ while(true){
 	
 	if((board.getBoard()[x1][y1] instanceof Queen)&&!Queen.isMoveValid(x1,y1,x2,y2,board)){
 	Start.logNormal("Invalid move for the queen figure. Try again\n");
+	continue;
+	}	
+	
+	if((board.getBoard()[x1][y1] instanceof King)&&!King.isMoveValid(x1,y1,x2,y2,board)){
+	Start.logNormal("Invalid move for the king figure. Try again\n");
 	continue;
 	}	
 
