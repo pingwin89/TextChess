@@ -18,22 +18,30 @@ import static org.fusesource.jansi.Ansi.Color.*;
 
 public class Start{
 	
-  private static Board board;
+  private Board board;
+  
+  public Start(){
+	  board = new Board();
+  }
+  
+  public Board getBoard(){
+	  return board;
+  }
 
   public static void main(String[] args){
-    board = new Board();
+    Start start = new Start();
     Scanner s = new Scanner(System.in);
 
     logNormal("\nWelcome to TextChess!\nInput format: a,b>c,d for moving a figure from (a,b) to (c,d), where (row, column). For example: 6,4>5,4\n");
     logNormal("Type 'quit' to exit\n\n");
 
-    board.printOut();
+    start.getBoard().printOut();
     int turn=0;
 
 while(true){
 
-	if(((King) board.locateKing("RED")).isChecked(board)) logNormal("Red king is checked!\n");
-	if(((King) board.locateKing("BLUE")).isChecked(board)) logNormal("Blue king is checked!\n");
+	if(((King) start.getBoard().locateKing("RED")).isChecked(start.getBoard())) logNormal("Red king is checked!\n");
+	if(((King) start.getBoard().locateKing("BLUE")).isChecked(start.getBoard())) logNormal("Blue king is checked!\n");
 
 	turn=turn%2;
 	if(turn==0) logBlue("player \n");
@@ -48,54 +56,54 @@ while(true){
 	int x2 = Integer.parseInt(input.split(">")[1].split(",")[0]);
 	int y2 = Integer.parseInt(input.split(">")[1].split(",")[1]);
 
-	if(board.getBoard()[x1][y1]==null){
+	if(start.getBoard().getBoard()[x1][y1]==null){
 		Start.logNormal("There is no figure in this field\n");
 		continue;	
 	}
 
-	if((turn==0)&&(!board.getBoard()[x1][y1].getColor().equals("BLUE"))){
+	if((turn==0)&&(!start.getBoard().getBoard()[x1][y1].getColor().equals("BLUE"))){
 		Start.logNormal("It's blue player's turn\n\n");
 		turn--;
 		continue;
 	}
 
-	if((turn==1)&&(!board.getBoard()[x1][y1].getColor().equals("RED"))){
+	if((turn==1)&&(!start.getBoard().getBoard()[x1][y1].getColor().equals("RED"))){
 		Start.logNormal("It's red player's turn\n\n");
 		turn--;
 		continue;
 	}
 
-	if((board.getBoard()[x2][y2]!=null)&&(board.getBoard()[x1][y1].getColor().equals(board.getBoard()[x2][y2].getColor()))){
+	if((start.getBoard().getBoard()[x2][y2]!=null)&&(start.getBoard().getBoard()[x1][y1].getColor().equals(start.getBoard().getBoard()[x2][y2].getColor()))){
 		Start.logNormal("Cant beat your own figure\n");
 		continue;
 	}
 
-	if((board.getBoard()[x1][y1] instanceof Pawn)&&!((Pawn) board.getBoard()[x1][y1]).isMoveValid(x1,y1,x2,y2,board)){
+	if((start.getBoard().getBoard()[x1][y1] instanceof Pawn)&&!((Pawn) start.getBoard().getBoard()[x1][y1]).isMoveValid(x1,y1,x2,y2,start.getBoard())){
 	Start.logNormal("Invalid move for the pawn figure. Try again\n");
 	continue;
 	}
 
-	if((board.getBoard()[x1][y1] instanceof Knight)&&!Knight.isMoveValid(x1,y1,x2,y2)){
+	if((start.getBoard().getBoard()[x1][y1] instanceof Knight)&&!Knight.isMoveValid(x1,y1,x2,y2)){
 	Start.logNormal("Invalid move for the knight figure. Try again\n");
 	continue;
 	}
 
-	if((board.getBoard()[x1][y1] instanceof Rook)&&!Rook.isMoveValid(x1,y1,x2,y2,board)){
+	if((start.getBoard().getBoard()[x1][y1] instanceof Rook)&&!Rook.isMoveValid(x1,y1,x2,y2,start.getBoard())){
 	Start.logNormal("Invalid move for the rook figure. Try again\n");
 	continue;
 	}
 
-	if((board.getBoard()[x1][y1] instanceof Bishop)&&!Bishop.isMoveValid(x1,y1,x2,y2,board)){
+	if((start.getBoard().getBoard()[x1][y1] instanceof Bishop)&&!Bishop.isMoveValid(x1,y1,x2,y2,start.getBoard())){
 	Start.logNormal("Invalid move for the bishop figure. Try again\n");
 	continue;
 	}
 	
-	if((board.getBoard()[x1][y1] instanceof Queen)&&!Queen.isMoveValid(x1,y1,x2,y2,board)){
+	if((start.getBoard().getBoard()[x1][y1] instanceof Queen)&&!Queen.isMoveValid(x1,y1,x2,y2,start.getBoard())){
 	Start.logNormal("Invalid move for the queen figure. Try again\n");
 	continue;
 	}	
 	
-	if((board.getBoard()[x1][y1] instanceof King)&&!King.isMoveValid(x1,y1,x2,y2,board)){
+	if((start.getBoard().getBoard()[x1][y1] instanceof King)&&!King.isMoveValid(x1,y1,x2,y2,start.getBoard())){
 	Start.logNormal("Invalid move for the king figure. Try again\n");
 	continue;
 	}	
@@ -112,9 +120,9 @@ while(true){
 		continue;
 	}
 */
-	board.move(x1,y1,x2,y2);
+	start.getBoard().move(x1,y1,x2,y2);
 	turn++;
-	board.printOut();
+	start.getBoard().printOut();
 	}
 	catch(Exception e){
 		logNormal("Error: "+e.toString()+"\n");
