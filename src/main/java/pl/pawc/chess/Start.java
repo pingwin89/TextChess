@@ -28,11 +28,16 @@ public class Start{
     logNormal("Type 'quit' to exit\n\n");
 
     board.printOut();
+    int turn=1;
 
 while(true){
+	turn++;
+	turn=turn%2;
+	if(turn==0) logBlue("player \n");
+	if(turn==1) logRed("player \n");
 	
-	logNormal("# ");
 	String input = s.nextLine();
+
 	if("quit".equals(input)) break;
 	try{
 	int x1 = Integer.parseInt(input.split(">")[0].split(",")[0]); 
@@ -43,6 +48,18 @@ while(true){
 	if(board.getBoard()[x1][y1]==null){
 		Start.logNormal("There is no figure in this field\n");
 		continue;	
+	}
+
+	if((turn==0)&&(!board.getBoard()[x1][y1].getColor().equals("BLUE"))){
+		Start.logNormal("It's blue player's turn\n\n");
+		turn--;
+		continue;
+	}
+
+	if((turn==1)&&(!board.getBoard()[x1][y1].getColor().equals("RED"))){
+		Start.logNormal("It's red player's turn\n\n");
+		turn--;
+		continue;
 	}
 
 	if((board.getBoard()[x2][y2]!=null)&&(board.getBoard()[x1][y1].getColor().equals(board.getBoard()[x2][y2].getColor()))){
@@ -88,6 +105,7 @@ while(true){
 	}
 
   }
+
 }
   
   public static void logRed(String string){
