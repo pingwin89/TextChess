@@ -1,10 +1,15 @@
 package pl.pawc.chess.model;
 
 import pl.pawc.chess.Start;
+import java.lang.CloneNotSupportedException;
 
-public class Board {
+public class Board implements Cloneable {
 	
 	private Figure[][] board;
+	
+	public Board(Board newBoard){
+	this.board = newBoard.board;
+	}
 	
 	public Board(){
 		board = new Figure[8][8];
@@ -33,6 +38,10 @@ public class Board {
 	
 	public Figure[][] getBoard(){
 		return board;
+	}
+
+	public Object clone() throws CloneNotSupportedException{
+		return new Board(this);
 	}
 
 	public void printOut(){

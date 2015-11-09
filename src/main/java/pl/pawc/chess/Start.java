@@ -28,10 +28,13 @@ public class Start{
     logNormal("Type 'quit' to exit\n\n");
 
     board.printOut();
-    int turn=1;
+    int turn=0;
 
 while(true){
-	turn++;
+
+	if(((King) board.locateKing("RED")).isChecked(board)) logNormal("Red king is checked!\n");
+	if(((King) board.locateKing("BLUE")).isChecked(board)) logNormal("Blue king is checked!\n");
+
 	turn=turn%2;
 	if(turn==0) logBlue("player \n");
 	if(turn==1) logRed("player \n");
@@ -97,11 +100,25 @@ while(true){
 	continue;
 	}	
 
+/*	//theoretically
+	Board tempBoard = (Board) board.clone();
+	tempBoard.move(x1,y2,x2,y2);
+	if((turn==1)&&((King) tempBoard.locateKing("RED")).isChecked(tempBoard)){
+		System.out.println("Can't move because red king will be checked"); 
+		continue;
+	}
+	if((turn==0)&&((King) tempBoard.locateKing("BLUE")).isChecked(tempBoard)){
+		System.out.println("Can't move because blue king will be checked");
+		continue;
+	}
+*/
 	board.move(x1,y1,x2,y2);
+	turn++;
 	board.printOut();
 	}
 	catch(Exception e){
 		logNormal("Error: "+e.toString()+"\n");
+		e.printStackTrace();
 	}
 
   }
