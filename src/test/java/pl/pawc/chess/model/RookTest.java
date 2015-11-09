@@ -14,7 +14,8 @@ public class RookTest extends TestCase{
     }
 
     public void testIsMoveValid(){
-    Board board = new Board();
+
+        Board board = new Board();
 	assertFalse(Rook.isMoveValid(7, 0, 5, 0, board));
 	board.move(6, 0, 5, 1);
 	assertTrue(Rook.isMoveValid(7, 0, 5, 0, board));
@@ -24,11 +25,9 @@ public class RookTest extends TestCase{
 	assertFalse(Rook.isMoveValid(2, 7, 2, 5, board));
 	board.move(2, 6, 3, 6);
 	assertTrue(Rook.isMoveValid(2, 7, 2, 5, board));
-	board.move(2, 5, 3, 3);
-	assertFalse(Rook.isMoveValid(3, 3, 4, 4, board));
-	assertFalse(Rook.isMoveValid(3, 3, 2, 2, board));
-	assertFalse(Rook.isMoveValid(3, 3, 4, 2, board));
-	assertFalse(Rook.isMoveValid(3, 3, 2, 4, board));			
+	assertFalse(Rook.isMoveValid(2, 7, 3, 6, board));
+	board.move(7 ,0 ,5 ,0);
+	assertFalse(Rook.isMoveValid(5, 0, 4, 1, board));
 	
    }
 

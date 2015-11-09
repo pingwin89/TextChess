@@ -70,6 +70,17 @@ public class Board {
 	public void move(int x1, int y1, int x2, int y2){
 		board[x2][y2] = board[x1][y1];
 		board[x1][y1] = null;
+		board[x2][y2].setX(x2);
+		board[x2][y2].setY(y2);
+	}
+
+	public Figure locateKing(String color){
+		for(Figure[] f : board){
+			for(Figure figure: f){
+				if((figure!=null)&&(figure instanceof King)&&(figure.getColor().equals(color))) return figure;
+			}
+		}
+	return null;
 	}
 
 }

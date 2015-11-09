@@ -11,13 +11,14 @@ import pl.pawc.chess.model.Rook;
 import pl.pawc.chess.model.Bishop;
 import pl.pawc.chess.model.Pawn;
 import pl.pawc.chess.model.Queen;
+import pl.pawc.chess.model.King;
 
 import static org.fusesource.jansi.Ansi.*;
 import static org.fusesource.jansi.Ansi.Color.*;
 
 public class Start{
 	
-    private static Board board;
+  private static Board board;
 
   public static void main(String[] args){
     board = new Board();
@@ -29,6 +30,7 @@ public class Start{
     board.printOut();
 
 while(true){
+	
 	logNormal("# ");
 	String input = s.nextLine();
 	if("quit".equals(input)) break;
