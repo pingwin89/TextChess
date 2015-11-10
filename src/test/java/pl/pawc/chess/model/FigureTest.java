@@ -28,4 +28,14 @@ public class FigureTest extends TestCase{
 	assertEquals(2, figure.getY());
     }
 
+	public void testClone(){
+	Figure figureOriginal = new Figure(1,1,"RED");
+	Figure figureClone = null;
+	try{ figureClone = figureOriginal.clone(); }catch(CloneNotSupportedException e){e.printStackTrace();}
+	figureClone.setX(2);
+	figureClone.setY(2);
+	assertFalse(figureOriginal.getX()==figureClone.getX());		
+	assertFalse(figureOriginal.getY()==figureClone.getY());
+	}
+
 }

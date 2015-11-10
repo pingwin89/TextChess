@@ -1,16 +1,11 @@
 package pl.pawc.chess.model;
 
 import pl.pawc.chess.Start;
-import java.lang.CloneNotSupportedException;
 
 public class Board implements Cloneable {
 	
 	private Figure[][] board;
-	
-	public Board(Board newBoard){
-	this.board = newBoard.board;
-	}
-	
+		
 	public Board(){
 		board = new Figure[8][8];
 		for(int i=0; i<8; i++){
@@ -35,13 +30,25 @@ public class Board implements Cloneable {
 		board[7][3] = new King(7,3, "BLUE");
 		board[7][4] = new Queen(7,4, "BLUE");
 	}
+
+	public Board(Figure[][] board){
+		this.board=board;
+	}
+
 	
 	public Figure[][] getBoard(){
 		return board;
 	}
 
-	public Object clone() throws CloneNotSupportedException{
-		return new Board(this);
+	@Override public Board clone() throws CloneNotSupportedException{
+		Figure[][] resultBoard = new Figure[8][8];
+		for(Figure[] f : getBoard()){
+			for(Figure figure : f){
+				resultBoard[figure.getX()][figure.getY()] = figure.clone();
+			}
+		}
+		Board result = new Board(resultBoard);
+		return result;
 	}
 
 	public void printOut(){

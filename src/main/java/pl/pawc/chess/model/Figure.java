@@ -1,6 +1,6 @@
 package pl.pawc.chess.model;
 
-public class Figure{
+public class Figure implements Cloneable{
 	private int x;
 	private int y;
 	private int moveCounter;
@@ -11,6 +11,11 @@ public class Figure{
 	this.y=y;
 	moveCounter=0;
 	this.color=color;
+	}
+
+	@Override public Figure clone() throws CloneNotSupportedException{
+	Figure result = (Figure) super.clone();
+	return result;
 	}
 	
 	public int getX(){
