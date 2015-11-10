@@ -24,12 +24,11 @@ public class BoardTest extends TestCase{
 
 	public void testClone(){
 	Board boardOriginal = new Board();
-	assertTrue(true);
 
 	try{
 		Board boardClone = boardOriginal.clone();
-		//boardClone.move(1,0,2,0);
-		//assertNotNull(boardOriginal.getBoard()[2][0]);
+		boardClone.move(1,0,2,0);
+		assertNull(boardOriginal.getBoard()[2][0]);
 		}
 	catch(CloneNotSupportedException e){
 		e.printStackTrace();

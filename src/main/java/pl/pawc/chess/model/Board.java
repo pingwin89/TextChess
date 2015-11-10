@@ -42,9 +42,9 @@ public class Board implements Cloneable {
 
 	@Override public Board clone() throws CloneNotSupportedException{
 		Figure[][] resultBoard = new Figure[8][8];
-		for(Figure[] f : getBoard()){
+		for(Figure[] f : board){
 			for(Figure figure : f){
-				resultBoard[figure.getX()][figure.getY()] = figure.clone();
+				if(figure!=null) resultBoard[figure.getX()][figure.getY()] = figure.clone();
 			}
 		}
 		Board result = new Board(resultBoard);

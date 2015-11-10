@@ -5,6 +5,7 @@ import java.util.Scanner;
 import org.fusesource.jansi.AnsiConsole;
 
 import pl.pawc.chess.model.Board;
+import pl.pawc.chess.model.Figure;
 import pl.pawc.chess.model.King;
 import pl.pawc.chess.model.Knight;
 import pl.pawc.chess.model.Rook;
@@ -63,13 +64,11 @@ while(true){
 
 	if((turn==0)&&(!start.getBoard().getBoard()[x1][y1].getColor().equals("BLUE"))){
 		Start.logNormal("It's blue player's turn\n\n");
-		turn--;
 		continue;
 	}
 
 	if((turn==1)&&(!start.getBoard().getBoard()[x1][y1].getColor().equals("RED"))){
 		Start.logNormal("It's red player's turn\n\n");
-		turn--;
 		continue;
 	}
 
@@ -108,9 +107,13 @@ while(true){
 	continue;
 	}	
 
-/*	//theoretically
-	Board tempBoard = (Board) board.clone();
+	//theoretically
+	Figure[][] tempFigures = new Figure[8][8];
+	Board tempBoard = new Board(tempFigures);
+	tempBoard = start.getBoard().clone();
 	tempBoard.move(x1,y2,x2,y2);
+	System.out.println(turn+", red "+((King) tempBoard.locateKing("RED")).isChecked(tempBoard));
+	System.out.println(turn+", blue "+((King) tempBoard.locateKing("BLUE")).isChecked(tempBoard));
 	if((turn==1)&&((King) tempBoard.locateKing("RED")).isChecked(tempBoard)){
 		System.out.println("Can't move because red king will be checked"); 
 		continue;
@@ -119,7 +122,7 @@ while(true){
 		System.out.println("Can't move because blue king will be checked");
 		continue;
 	}
-*/
+
 	start.getBoard().move(x1,y1,x2,y2);
 	turn++;
 	start.getBoard().printOut();
