@@ -1,6 +1,6 @@
 package pl.pawc.chess.model;
 
-import pl.pawc.chess.Start;
+import pl.pawc.chess.game.Log;
 
 public class Board implements Cloneable {
 	
@@ -52,35 +52,34 @@ public class Board implements Cloneable {
 	}
 
 	public void printOut(){
-		//Start.logNormal("\n");
-		Start.logNormal("  0 1 2 3 4 5 6 7\n");		
+		Log.normal("  0 1 2 3 4 5 6 7\n");		
 		for(int i=0; i<8; i++){
 			for(int j=0; j<8; j++){
-				if(j==0) Start.logNormal(Integer.toString(i)+" ");
+				if(j==0) Log.normal(Integer.toString(i)+" ");
 				if(board[i][j] != null ){
 
-					if(board[i][j] instanceof Pawn) if(board[i][j].getColor().equals("RED")) Start.logRed("P"); 
-					if(board[i][j] instanceof Pawn) if(board[i][j].getColor().equals("BLUE")) Start.logBlue("P"); 
-					if(board[i][j] instanceof Knight) if(board[i][j].getColor().equals("RED")) Start.logRed("K"); 
-					if(board[i][j] instanceof Knight) if(board[i][j].getColor().equals("BLUE")) Start.logBlue("K"); 
-					if(board[i][j] instanceof Bishop) if(board[i][j].getColor().equals("RED")) Start.logRed("B"); 
-					if(board[i][j] instanceof Bishop) if(board[i][j].getColor().equals("BLUE")) Start.logBlue("B"); 
-					if(board[i][j] instanceof Rook) if(board[i][j].getColor().equals("RED")) Start.logRed("R"); 
-					if(board[i][j] instanceof Rook) if(board[i][j].getColor().equals("BLUE")) Start.logBlue("R"); 
-					if(board[i][j] instanceof Queen) if(board[i][j].getColor().equals("RED")) Start.logRed("Q"); 
-					if(board[i][j] instanceof Queen) if(board[i][j].getColor().equals("BLUE")) Start.logBlue("Q");
-					if(board[i][j] instanceof King) if(board[i][j].getColor().equals("RED")) Start.logRed("+");  
-					if(board[i][j] instanceof King) if(board[i][j].getColor().equals("BLUE")) Start.logBlue("+");    
+					if(board[i][j] instanceof Pawn) if(board[i][j].getColor().equals("RED")) Log.red("P"); 
+					if(board[i][j] instanceof Pawn) if(board[i][j].getColor().equals("BLUE")) Log.blue("P"); 
+					if(board[i][j] instanceof Knight) if(board[i][j].getColor().equals("RED")) Log.red("K"); 
+					if(board[i][j] instanceof Knight) if(board[i][j].getColor().equals("BLUE")) Log.blue("K"); 
+					if(board[i][j] instanceof Bishop) if(board[i][j].getColor().equals("RED")) Log.red("B"); 
+					if(board[i][j] instanceof Bishop) if(board[i][j].getColor().equals("BLUE")) Log.blue("B"); 
+					if(board[i][j] instanceof Rook) if(board[i][j].getColor().equals("RED")) Log.red("R"); 
+					if(board[i][j] instanceof Rook) if(board[i][j].getColor().equals("BLUE")) Log.blue("R"); 
+					if(board[i][j] instanceof Queen) if(board[i][j].getColor().equals("RED")) Log.red("Q"); 
+					if(board[i][j] instanceof Queen) if(board[i][j].getColor().equals("BLUE")) Log.blue("Q");
+					if(board[i][j] instanceof King) if(board[i][j].getColor().equals("RED")) Log.red("+");  
+					if(board[i][j] instanceof King) if(board[i][j].getColor().equals("BLUE")) Log.blue("+");    
 				
 				}
 				else{
-					Start.logNormal("-");
+					Log.normal("-");
 				}
-				Start.logNormal(" ");
+				Log.normal(" ");
 			}
-		Start.logNormal("\n");
+		Log.normal("\n");
 		}
-	Start.logNormal("\n");
+	Log.normal("\n");
 	}
 
 	public void move(int x1, int y1, int x2, int y2){

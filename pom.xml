@@ -33,7 +33,7 @@
 		      <configuration>
 		        <archive>
 		          <manifest>
-		            <mainClass>pl.pawc.chess.Start</mainClass>
+		            <mainClass>pl.pawc.chess.Main</mainClass>
 		          </manifest>
 		        </archive>
 		        <descriptorRefs>
