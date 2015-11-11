@@ -107,13 +107,15 @@ while(true){
 	continue;
 	}	
 
-	//theoretically
-	Figure[][] tempFigures = new Figure[8][8];
-	Board tempBoard = new Board(tempFigures);
-	tempBoard = start.getBoard().clone();
-	tempBoard.move(x1,y2,x2,y2);
-	System.out.println(turn+", red "+((King) tempBoard.locateKing("RED")).isChecked(tempBoard));
-	System.out.println(turn+", blue "+((King) tempBoard.locateKing("BLUE")).isChecked(tempBoard));
+	//preventing the king figure from moving into a check situation by cloning the current board and performing the movement there first
+	Board tempBoard = null;
+    try{
+        tempBoard = start.getBoard().clone();
+    }
+    catch(CloneNotSupportedException e){
+        e.printStackTrace();
+    }
+    tempBoard.move(x1,y1,x2,y2);
 	if((turn==1)&&((King) tempBoard.locateKing("RED")).isChecked(tempBoard)){
 		System.out.println("Can't move because red king will be checked"); 
 		continue;

@@ -33,7 +33,24 @@ public class BoardTest extends TestCase{
 	catch(CloneNotSupportedException e){
 		e.printStackTrace();
 		}
-
+	}
+	
+	public void testKingCheckedOnCloneBoard(){
+	Board boardOriginal = new Board();
+	Board boardClone = null;
+	try{
+        boardClone = boardOriginal.clone();
+        }
+    catch(CloneNotSupportedException e){
+        e.printStackTrace();
+    }
+	boardClone.move(6, 3, 5, 3);
+	boardClone.move(1,3,2,3);
+	boardClone.move(7, 3, 6, 3);
+	boardClone.move(0, 4, 2, 2);
+	boardClone.move(6, 3, 5, 2);
+	assertTrue(((King) boardClone.locateKing("BLUE")).isChecked(boardClone));
+	assertFalse(((King) boardOriginal.locateKing("BLUE")).isChecked(boardOriginal));
 	}
 
 }
