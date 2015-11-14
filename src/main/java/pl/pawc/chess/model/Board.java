@@ -1,5 +1,7 @@
 package pl.pawc.chess.model;
 
+import java.util.Vector;
+
 import pl.pawc.chess.game.Log;
 
 public class Board implements Cloneable {
@@ -80,6 +82,20 @@ public class Board implements Cloneable {
 		Log.normal("\n");
 		}
 	Log.normal("\n");
+	}
+	
+	public Vector<Figure> canMoveTo(int x2, int y2, String color){
+	    Vector<Figure> result = new Vector<Figure>();
+	    for(Figure[] figure : getBoard()){
+	        for(Figure f : figure){
+	            if((f!=null)&&(f.getColor().equals(color))&&(f instanceof Pawn)&&((Pawn) f).isMoveValid(f.getX(), f.getY(), x2, y2, this)) result.add(f);
+	            if((f!=null)&&(f.getColor().equals(color))&&(f instanceof Rook)&&((Rook) f).isMoveValid(f.getX(), f.getY(), x2, y2, this)) result.add(f);
+	            if((f!=null)&&(f.getColor().equals(color))&&(f instanceof Knight)&&((Knight) f).isMoveValid(f.getX(), f.getY(), x2, y2)) result.add(f);
+	            if((f!=null)&&(f.getColor().equals(color))&&(f instanceof Bishop)&&((Bishop) f).isMoveValid(f.getX(), f.getY(), x2, y2, this)) result.add(f);
+	            if((f!=null)&&(f.getColor().equals(color))&&(f instanceof Queen)&&((Queen) f).isMoveValid(f.getX(), f.getY(), x2, y2, this)) result.add(f);
+	        }
+	    }
+	    return result;
 	}
 
 	public void move(int x1, int y1, int x2, int y2){

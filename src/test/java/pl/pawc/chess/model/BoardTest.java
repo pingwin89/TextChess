@@ -52,5 +52,18 @@ public class BoardTest extends TestCase{
 	assertTrue(((King) boardClone.locateKing("BLUE")).isChecked(boardClone));
 	assertFalse(((King) boardOriginal.locateKing("BLUE")).isChecked(boardOriginal));
 	}
+	
+	public void testCanMoveTo(){
+	    Board board = new Board();
+	    assertEquals(2, board.canMoveTo(5, 0, "BLUE").size());
+	    assertEquals(1, board.canMoveTo(5, 6, "BLUE").size());
+	    board.move(6, 5, 5, 5);
+	    assertEquals(2, board.canMoveTo(5, 6, "BLUE").size());
+	    /*
+	    for(Figure figure : board.canMoveTo(5, 0, "BLUE")){
+	        System.out.println(figure.getX()+", "+figure.getY());
+	    }
+	    */
+	}
 
 }
