@@ -54,10 +54,10 @@ public class Board implements Cloneable {
 	}
 
 	public void printOut(){
-		Log.normal("  0 1 2 3 4 5 6 7\n");		
+		Log.normal("  A B C D E F G H\n");		
 		for(int i=0; i<8; i++){
 			for(int j=0; j<8; j++){
-				if(j==0) Log.normal(Integer.toString(i)+" ");
+				if(j==0) Log.normal(Integer.toString(i+1)+" ");
 				if(board[i][j] != null ){
 
 					if(board[i][j] instanceof Pawn) if(board[i][j].getColor().equals("RED")) Log.red("P"); 
@@ -103,12 +103,12 @@ public class Board implements Cloneable {
 	        for(Figure[] figure : getBoard()){
 	            for(Figure f : figure){
 	                if((f!=null)&&(f.getColor().equals(color))){
-	                    if(classof.equals("Pawn")&&(f.getItsClass().equals("Pawn"))&&((Pawn) f).isMoveValid(f.getX(), f.getY(), x2, y2, this)) result.add(f);
-	                    if(classof.equals("Rook")&&(f.getItsClass().equals("Rook"))&&((Rook) f).isMoveValid(f.getX(), f.getY(), x2, y2, this)) result.add(f);
-	                    if(classof.equals("Knight")&&(f.getItsClass().equals("Knight"))&&((Knight) f).isMoveValid(f.getX(), f.getY(), x2, y2)) result.add(f);
-	                    if(classof.equals("Bishop")&&(f.getItsClass().equals("Bishop"))&&((Bishop) f).isMoveValid(f.getX(), f.getY(), x2, y2, this)) result.add(f);
-	                    if(classof.equals("Queen")&&(f.getItsClass().equals("Queen"))&&((Queen) f).isMoveValid(f.getX(), f.getY(), x2, y2, this)) result.add(f);
-	                    if(classof.equals("King")&&(f.getItsClass().equals("King"))&&((King) f).isMoveValid(f.getX(), f.getY(), x2, y2, this)) result.add(f);
+	                    if(classof.equals("pawn")&&(f.getItsClass().equals("Pawn"))&&((Pawn) f).isMoveValid(f.getX(), f.getY(), x2, y2, this)) result.add(f);
+	                    if(classof.equals("rook")&&(f.getItsClass().equals("Rook"))&&((Rook) f).isMoveValid(f.getX(), f.getY(), x2, y2, this)) result.add(f);
+	                    if(classof.equals("knight")&&(f.getItsClass().equals("Knight"))&&((Knight) f).isMoveValid(f.getX(), f.getY(), x2, y2)) result.add(f);
+	                    if(classof.equals("bishop")&&(f.getItsClass().equals("Bishop"))&&((Bishop) f).isMoveValid(f.getX(), f.getY(), x2, y2, this)) result.add(f);
+	                    if(classof.equals("queen")&&(f.getItsClass().equals("Queen"))&&((Queen) f).isMoveValid(f.getX(), f.getY(), x2, y2, this)) result.add(f);
+	                    if(classof.equals("king")&&(f.getItsClass().equals("King"))&&((King) f).isMoveValid(f.getX(), f.getY(), x2, y2, this)) result.add(f);
 	                }
 
 	            }

@@ -21,7 +21,7 @@ public class MoveTest extends TestCase{
    }
     
     public void testConstructor(){
-        String input = "Pawn to B6";
+        String input = "pawn to B6";
         int turn = 0;
         Board board = new Board();
         Move move = new Move(input, turn, board);
@@ -35,7 +35,13 @@ public class MoveTest extends TestCase{
         assertTrue(move2.getY1()==2);
         assertTrue(move2.getX2()==5);
         assertTrue(move2.getY2()==4);
-    
+        board.move(7, 2, 5, 4);
+        Move move3 = new Move("Bishop to D5", 0, board);
+        assertTrue(move3.getX1()==5);
+        assertTrue(move3.getY1()==4);
+        assertTrue(move3.getX2()==4);
+        assertTrue(move3.getY2()==3);
+
     }
 
 }

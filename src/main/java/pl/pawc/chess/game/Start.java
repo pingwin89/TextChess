@@ -37,33 +37,25 @@ while(true){
 	if(turn==1) Log.red("player \n");
 	
 	String input = s.nextLine();
+	if("quit".equals(input.toLowerCase())) break;
+	
+	Move move = new Move(input, turn, getBoard());
+	
+	if(move.getX1()==-1){
+	    System.out.println("uncertain about the figure to move");
+	    continue;
+	}
+	
+	if(!MoveValidation.validate(move.getX1(), move.getY1(), move.getX2(), move.getY2(), turn, start.getBoard())) continue;
 
-	if("quit".equals(input)) break;
-	
-	int x1, y1, x2, y2;
-	
-	try{
-	x1 = Integer.parseInt(input.split(">")[0].split(",")[0]); 
-	y1 = Integer.parseInt(input.split(">")[0].split(",")[1]); 
-	x2 = Integer.parseInt(input.split(">")[1].split(",")[0]);
-	y2 = Integer.parseInt(input.split(">")[1].split(",")[1]);
-    }
-    catch(Exception e){
-        Log.normal("Error: "+e.toString()+"\n");
-        e.printStackTrace();
-        continue;
-    }
-	
-	if(!MoveValidation.validate(x1, y1, x2, y2, turn, start.getBoard())) continue;
-
-	start.getBoard().move(x1,y1,x2,y2);
+	start.getBoard().move(move.getX1(), move.getY1(), move.getX2(), move.getY2());
 	
 	turn++;
 	
 	start.getBoard().printOut();
 
   }
-s.close();
+
 }
   
 }

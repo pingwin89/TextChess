@@ -25,9 +25,9 @@ public class Move {
         case 1 : color="RED"; break;
         }
         
-        if(board.canMoveTo(x2, y2, input.split(" ")[0], color).size()==1){
-            x1 = board.canMoveTo(x2, y2, input.split(" ")[0], color).get(0).getX();
-            y1 = board.canMoveTo(x2, y2, input.split(" ")[0], color).get(0).getY();
+        if(board.canMoveTo(x2, y2, input.split(" ")[0].toLowerCase(), color).size()==1){
+            x1 = board.canMoveTo(x2, y2, input.split(" ")[0].toLowerCase(), color).get(0).getX();
+            y1 = board.canMoveTo(x2, y2, input.split(" ")[0].toLowerCase(), color).get(0).getY();
         }
         else{
             x1 = -1;

@@ -68,11 +68,11 @@ public class BoardTest extends TestCase{
 	
 	public void testCanMoveToSecond(){
 	    Board board = new Board();
-	    assertEquals(1, board.canMoveTo(5,0,"Pawn","BLUE").size());
-	    assertEquals(1, board.canMoveTo(2,2,"Knight","RED").size());
+	    assertEquals(1, board.canMoveTo(5,0,"pawn","BLUE").size());
+	    assertEquals(1, board.canMoveTo(2,2,"knight","RED").size());
 	    board.move(7, 1, 5, 2);
 	    board.move(6,4,5,4);
-	    assertEquals(2, board.canMoveTo(6,4,"Knight","BLUE").size());
+	    assertEquals(2, board.canMoveTo(6,4,"knight","BLUE").size());
 	}
 
 }
