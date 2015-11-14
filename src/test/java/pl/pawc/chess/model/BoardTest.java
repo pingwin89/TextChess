@@ -53,7 +53,7 @@ public class BoardTest extends TestCase{
 	assertFalse(((King) boardOriginal.locateKing("BLUE")).isChecked(boardOriginal));
 	}
 	
-	public void testCanMoveTo(){
+	public void testCanMoveToFirst(){
 	    Board board = new Board();
 	    assertEquals(2, board.canMoveTo(5, 0, "BLUE").size());
 	    assertEquals(1, board.canMoveTo(5, 6, "BLUE").size());
@@ -64,6 +64,15 @@ public class BoardTest extends TestCase{
 	        System.out.println(figure.getX()+", "+figure.getY());
 	    }
 	    */
+	}
+	
+	public void testCanMoveToSecond(){
+	    Board board = new Board();
+	    assertEquals(1, board.canMoveTo(5,0,"Pawn","BLUE").size());
+	    assertEquals(1, board.canMoveTo(2,2,"Knight","RED").size());
+	    board.move(7, 1, 5, 2);
+	    board.move(6,4,5,4);
+	    assertEquals(2, board.canMoveTo(6,4,"Knight","BLUE").size());
 	}
 
 }

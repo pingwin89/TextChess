@@ -5,12 +5,21 @@ public class Figure implements Cloneable{
 	private int y;
 	private int moveCounter;
 	private String color;
+	private String itsClass;
 
 	public Figure(int x, int y, String color){
 	this.x=x;
 	this.y=y;
 	moveCounter=0;
 	this.color=color;
+	}
+	
+	public String getItsClass(){
+	    return itsClass;
+	}
+	
+	public void setItsClass(String itsClass){
+	    this.itsClass=itsClass;
 	}
 
 	@Override public Figure clone() throws CloneNotSupportedException{

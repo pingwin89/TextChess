@@ -4,6 +4,7 @@ public class Knight extends Figure{
 
 	public Knight(int x, int y, String color) {
 		super(x, y, color);
+		setItsClass("Knight");
 	}
 
 	public static boolean isMoveValid(int x1, int y1, int x2, int y2){

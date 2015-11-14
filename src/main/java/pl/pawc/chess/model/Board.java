@@ -97,6 +97,24 @@ public class Board implements Cloneable {
 	    }
 	    return result;
 	}
+	
+	   public Vector<Figure> canMoveTo(int x2, int y2, String classof, String color){
+	        Vector<Figure> result = new Vector<Figure>();
+	        for(Figure[] figure : getBoard()){
+	            for(Figure f : figure){
+	                if((f!=null)&&(f.getColor().equals(color))){
+	                    if(classof.equals("Pawn")&&(f.getItsClass().equals("Pawn"))&&((Pawn) f).isMoveValid(f.getX(), f.getY(), x2, y2, this)) result.add(f);
+	                    if(classof.equals("Rook")&&(f.getItsClass().equals("Rook"))&&((Rook) f).isMoveValid(f.getX(), f.getY(), x2, y2, this)) result.add(f);
+	                    if(classof.equals("Knight")&&(f.getItsClass().equals("Knight"))&&((Knight) f).isMoveValid(f.getX(), f.getY(), x2, y2)) result.add(f);
+	                    if(classof.equals("Bishop")&&(f.getItsClass().equals("Bishop"))&&((Bishop) f).isMoveValid(f.getX(), f.getY(), x2, y2, this)) result.add(f);
+	                    if(classof.equals("Queen")&&(f.getItsClass().equals("Queen"))&&((Queen) f).isMoveValid(f.getX(), f.getY(), x2, y2, this)) result.add(f);
+	                    if(classof.equals("King")&&(f.getItsClass().equals("King"))&&((King) f).isMoveValid(f.getX(), f.getY(), x2, y2, this)) result.add(f);
+	                }
+
+	            }
+	        }
+	        return result;
+	    }
 
 	public void move(int x1, int y1, int x2, int y2){
 		board[x2][y2] = board[x1][y1];

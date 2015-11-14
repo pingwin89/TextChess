@@ -2,8 +2,9 @@ package pl.pawc.chess.model;
 
 public class King extends Figure{
 
-	public King(int x, int y, String color) {
+    public King(int x, int y, String color) {
 		super(x, y, color);
+		setItsClass("King");
 	}
 
 	public static boolean isMoveValid(int x1, int y1, int x2, int y2, Board board){
