@@ -1,5 +1,7 @@
 package pl.pawc.chess.game;
 
+import pl.pawc.chess.model.Board;
+
 public class Move {
 
     private int x1;
@@ -14,12 +16,40 @@ public class Move {
         y2=d;
     }
     
-    public Move(String input, int turn){
+    public Move(String input, int turn, Board board){
+        x2 = translate(input.split(" ")[2])[0];
+        y2 = translate(input.split(" ")[2])[1];
+        String color = null;
+        switch(turn){
+        case 0 : color="BLUE"; break;
+        case 1 : color="RED"; break;
+        }
         
-        
-        
+        if(board.canMoveTo(x2, y2, input.split(" ")[0], color).size()==1){
+            x1 = board.canMoveTo(x2, y2, input.split(" ")[0], color).get(0).getX();
+            y1 = board.canMoveTo(x2, y2, input.split(" ")[0], color).get(0).getY();
+        }
+        else{
+            x1 = -1;
+            y1 = -1;
+        }          
     }
     
+    public int getX1(){
+        return x1;
+    }
+    
+    public int getY1(){
+        return y1;
+    }
+    
+    public int getX2(){
+        return x2;
+    }
+    
+    public int getY2(){
+        return y2;
+    }
     
     // for example, translates C5 to 4,2 
     public static Integer[] translate(String field){
