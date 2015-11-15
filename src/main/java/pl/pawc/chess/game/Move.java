@@ -1,6 +1,7 @@
 package pl.pawc.chess.game;
 
 import pl.pawc.chess.model.Board;
+import pl.pawc.chess.model.Figure;
 
 public class Move {
 
@@ -28,10 +29,17 @@ public class Move {
         if(board.canMoveTo(x2, y2, input.split(" ")[0].toLowerCase(), color).size()==1){
             x1 = board.canMoveTo(x2, y2, input.split(" ")[0].toLowerCase(), color).get(0).getX();
             y1 = board.canMoveTo(x2, y2, input.split(" ")[0].toLowerCase(), color).get(0).getY();
+            System.out.println("Figures able to move there: "+board.canMoveTo(x2, y2, input.split(" ")[0].toLowerCase(), color).size());
         }
         else{
             x1 = -1;
             y1 = -1;
+            System.out.println("Figures able to move there: "+board.canMoveTo(x2, y2, input.split(" ")[0].toLowerCase(), color).size());
+                if(board.canMoveTo(x2, y2, input.split(" ")[0].toLowerCase(), color).size()>1){
+                    for(Figure figure : board.canMoveTo(x2, y2, input.split(" ")[0].toLowerCase(), color)){
+                        System.out.println(figure.getItsClass()+": "+figure.getX()+", "+figure.getY());
+                    }
+                }
         }          
     }
     
