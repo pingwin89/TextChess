@@ -1,3 +1,4 @@
+
 package pl.pawc.chess.game;
 
 import java.util.Scanner;
@@ -21,8 +22,8 @@ public class Start implements Runnable{
     Start start = new Start();
     Scanner s = new Scanner(System.in);
 
-    Log.normal("\nWelcome to TextChess!\nInput format: a,b>c,d for moving a figure from (a,b) to (c,d), where (row, column). For example: 6,4>5,4\n");
-    Log.normal("Type 'quit' to exit\n\n");
+    Log.normal("\nWelcome to TextChess!\nInput format example: 'pawn to a6'. \nIf there are more than one figure of same kind that are able to move there, specify in the second input desired figure e.g. 'b2'.   \n");
+    Log.normal("Type 'exit' or 'quit' when you finished playing\n\n");
 
     start.getBoard().printOut();
     int turn=0;
@@ -37,13 +38,24 @@ while(true){
 	if(turn==1) Log.red("player \n");
 	
 	String input = s.nextLine();
-	if("quit".equals(input.toLowerCase())) break;
+	if(("quit".equals(input.toLowerCase()))||("exit".equals(input.toLowerCase()))) break;
 	
-	Move move = new Move(input, turn, getBoard());
+	Move move;
+
+	try{
+	move = new Move(input, turn, start.getBoard());
 	
 	if(move.getX1()==-1){
-	    System.out.println("uncertain about the figure to move");
-	    continue;
+	    System.out.println("Specify - which "+input.split(" ")[0]+"? For example 'A1'");
+	    String inputSpecified = s.nextLine();
+	    if("quit".equals(inputSpecified.toLowerCase())) break;
+	    move.setX1(Move.translate(inputSpecified)[0]);
+	    move.setY1(Move.translate(inputSpecified)[1]);
+	}
+	}
+	catch(NumberFormatException e){
+	Log.normal("Oops, wrong input format. Try again\n");
+	continue;
 	}
 	
 	if(!MoveValidation.validate(move.getX1(), move.getY1(), move.getX2(), move.getY2(), turn, start.getBoard())) continue;
@@ -55,7 +67,7 @@ while(true){
 	start.getBoard().printOut();
 
   }
-
+Log.normal("Exited\n");
 }
   
 }

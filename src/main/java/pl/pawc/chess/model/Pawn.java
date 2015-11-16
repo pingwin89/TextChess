@@ -11,14 +11,14 @@ public class Pawn extends Figure {
 		switch(getColor()){
 			case "BLUE" : 
 				if((x1-x2==1)&&(y1==y2)&&(board.getBoard()[x2][y2]==null)) return true; //podstawowy ruch do przodu
-				if((x1==6)&&(x1-x2==2)&&(y1==y2)&&(board.getBoard()[x2][y2]==null)) return true; //dwa ruchy do przodu na pocz¹tku
+				if((x1==6)&&(board.getBoard()[5][y1]==null)&&(x1-x2==2)&&(y1==y2)&&(board.getBoard()[x2][y2]==null)) return true; //dwa ruchy do przodu na poczatku
 				if((x1-x2==1)&&(((y1-y2)==1)||((y2-y1)==1))&&(board.getBoard()[x2][y2]!=null)) return true; //bicie po skosie
 				break;
 				
 			case "RED" :
-                if((x2-x1==1)&&(y1==y2)&&(board.getBoard()[x2][y2]==null)) return true; //podstawowy ruch do przodu
-                if((x1==1)&&(x2-x1==2)&&(y1==y2)&&(board.getBoard()[x2][y2]==null)) return true; //dwa ruchy do przodu na pocz¹tku
-                if((x2-x1==1)&&(((y1-y2)==1)||((y2-y1)==1))&&(board.getBoard()[x2][y2]!=null)) return true; //bicie po skosie
+                		if((x2-x1==1)&&(y1==y2)&&(board.getBoard()[x2][y2]==null)) return true; //podstawowy ruch do przodu
+                		if((x1==1)&&(board.getBoard()[2][y1]==null)&&(x2-x1==2)&&(y1==y2)&&(board.getBoard()[x2][y2]==null)) return true; //dwa ruchy do przodu na poczatku
+                		if((x2-x1==1)&&(((y1-y2)==1)||((y2-y1)==1))&&(board.getBoard()[x2][y2]!=null)) return true; //bicie po skosie
 				break;	
 		}
 		return false;

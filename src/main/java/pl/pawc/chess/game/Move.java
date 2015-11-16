@@ -17,10 +17,15 @@ public class Move {
         y2=d;
     }
     
-    public Move(String input, int turn, Board board){
+    public Move(String input, int turn, Board board) throws NumberFormatException{
+	try{
         x2 = translate(input.split(" ")[2])[0];
         y2 = translate(input.split(" ")[2])[1];
-        String color = null;
+        }
+	catch(NumberFormatException | ArrayIndexOutOfBoundsException e){
+		throw new NumberFormatException ();	
+	}
+	String color = null;
         switch(turn){
         case 0 : color="BLUE"; break;
         case 1 : color="RED"; break;
@@ -29,7 +34,7 @@ public class Move {
         if(board.canMoveTo(x2, y2, input.split(" ")[0].toLowerCase(), color).size()==1){
             x1 = board.canMoveTo(x2, y2, input.split(" ")[0].toLowerCase(), color).get(0).getX();
             y1 = board.canMoveTo(x2, y2, input.split(" ")[0].toLowerCase(), color).get(0).getY();
-            System.out.println("Figures able to move there: "+board.canMoveTo(x2, y2, input.split(" ")[0].toLowerCase(), color).size());
+	    System.out.println(" ");	 
         }
         else{
             x1 = -1;
@@ -59,8 +64,16 @@ public class Move {
         return y2;
     }
     
+	public void setX1(int x){
+	this.x1=x;
+	}
+
+	public void setY1(int y){
+	this.y1=y;
+	}
+
     // for example, translates C5 to 4,2 
-    public static Integer[] translate(String field){
+    public static Integer[] translate(String field) throws NumberFormatException{
         Integer[] result = new Integer[2];
         char[] array = field.toCharArray();
         
@@ -73,9 +86,15 @@ public class Move {
         case "f" : result[1]=5; break;
         case "g" : result[1]=6; break;
         case "h" : result[1]=7; break;
-        }       
+	default : throw new NumberFormatException();
+        } 
+	try{      
         result[0]=Integer.parseInt(String.valueOf(array[1]))-1;      
-        return result;
+        }
+	catch(NumberFormatException e){
+		throw new NumberFormatException();
+	}
+	return result;
         }
     
 }
