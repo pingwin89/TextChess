@@ -23,6 +23,7 @@ public class Start implements Runnable{
     Scanner s = new Scanner(System.in);
 
     Log.normal("\nWelcome to TextChess!\nInput format example: 'pawn to a6'. \nIf there are more than one figure of same kind that are able to move there, specify in the second input desired figure e.g. 'b2'.   \n");
+    Log.normal("P : Pawn \n R : Rook \n K : Knight \n B : Bishop \n Q : Queen \n + : King \n");
     Log.normal("Type 'exit' or 'quit' when you finished playing\n\n");
 
     start.getBoard().printOut();
