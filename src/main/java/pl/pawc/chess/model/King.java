@@ -30,5 +30,32 @@ public class King extends Figure{
 		}
 		return false;
 	}
-
+/*
+	public boolean isCastlingPossible(Board board){
+		boolean o = (getMoveCounter()==0);
+		switch(getColor()){
+			case "BLUE" : 
+				boolean p = (board.getBoard()[7][0]!=null); 
+				boolean r = (board.getBoard()[7][0] instanceof Rook);
+				boolean s = ("BLUE".equals(board.getBoard()[7][0].getColor()));
+				boolean t = (board.getBoard()[7][0].getMoveCounter()==0);
+				boolean u = ((board.getBoard()[7][1]==null)&&(board.getBoard()[7][2]==null));
+				boolean v = ((board.canMoveTo(7,1,"RED").size()==0)&&(board.canMoveTo(7,2,"RED").size()==0));
+			 	if(o&&p&&r&&s&&t&&u&&v) return true;
+				boolean p2 = (board.getBoard()[7][7]!=null);
+				boolean t2 = (board.getBoard()[7][7].getMoveCounter()==0);
+				boolean u2 = ((board.getBoard()[7][6]==null)&&(board.getBoard()[7][5]==null)&&(board.getBoard()[7][4]==null));
+				//boolean v2 = ((board.canMoveTo(7,6,"RED").size()==0)&&(board.canMoveTo(7,5,"RED").size()==0)&&(board.canMoveTo(7,4,"RED")));
+//				if(o&&p2&&t2&&u2&&v2) return true;
+				break;
+			case "RED" :
+				boolean p3 = (board.getBoard()[0][0]!=null);
+				boolean r3 = (board.getBoard()[0][0].getMoveCounter()==0);
+				//boolean u3 = ((board.getBoard()[0][1]==null)&&(board.getBoard()[0][2]==null));
+				//boolean v3 = ((board.canMoveTo(0,1,"BLUE").size()==0)&&(board.canMoveTo(0,2,"BLUE").size()==0);				
+			
+		}
+	return false;
+	}
+*/
 }

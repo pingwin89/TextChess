@@ -22,6 +22,14 @@ public class Figure implements Cloneable{
 	    this.itsClass=itsClass;
 	}
 
+	public void incrementMoveCounter(){
+	moveCounter++;
+	}
+
+	public int getMoveCounter(){
+	return moveCounter;
+	}	
+
 	@Override public Figure clone() throws CloneNotSupportedException{
 	Figure result = (Figure) super.clone();
 	return result;

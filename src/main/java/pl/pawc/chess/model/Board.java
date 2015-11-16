@@ -121,6 +121,7 @@ public class Board implements Cloneable {
 		board[x1][y1] = null;
 		board[x2][y2].setX(x2);
 		board[x2][y2].setY(y2);
+		board[x2][y2].incrementMoveCounter();
 	}
 
 	public Figure locateKing(String color){
