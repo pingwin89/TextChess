@@ -75,4 +75,14 @@ public class BoardTest extends TestCase{
 	    assertEquals(2, board.canMoveTo(6,4,"knight","BLUE").size());
 	}
 
+	public void testPawnForQueen(){
+		Board board = new Board();
+		board.move(6,0,0,0);
+		board.pawnForQueen();
+		assertTrue(board.getBoard()[0][0] instanceof Queen);
+		assertTrue(board.getBoard()[0][0].getX()==0);
+		assertTrue(board.getBoard()[0][0].getY()==0);
+		assertEquals("BLUE", board.getBoard()[0][0].getColor());
+	}
+
 }

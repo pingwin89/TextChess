@@ -62,7 +62,7 @@ while(true){
 	if(!MoveValidation.validate(move.getX1(), move.getY1(), move.getX2(), move.getY2(), turn, start.getBoard())) continue;
 
 	start.getBoard().move(move.getX1(), move.getY1(), move.getX2(), move.getY2());
-	
+	start.getBoard().pawnForQueen();	
 	turn++;
 	
 	start.getBoard().printOut();

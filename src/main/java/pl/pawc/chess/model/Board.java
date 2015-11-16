@@ -132,4 +132,11 @@ public class Board implements Cloneable {
 	return null;
 	}
 
+	public void pawnForQueen(){
+		for(int i=0; i<8; i++){
+			if((getBoard()[0][i]!=null)&&(getBoard()[0][i] instanceof Pawn)) getBoard()[0][i]=new Queen(0,i,getBoard()[0][i].getColor());
+			if((getBoard()[7][i]!=null)&&(getBoard()[7][i] instanceof Pawn)) getBoard()[7][i]=new Queen(7,i,getBoard()[7][i].getColor());
+		}	
+	}
+
 }
