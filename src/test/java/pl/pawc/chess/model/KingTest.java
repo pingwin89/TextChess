@@ -16,12 +16,12 @@ public class KingTest extends TestCase{
     public void testIsMoveValid(){
     Board board = new Board();
     board.move(6, 3, 5, 3);
-    assertTrue(King.isMoveValid(7, 3, 6, 3, board));
+    assertTrue(((King) board.locateKing("BLUE")).isMoveValid(7, 3, 6, 3, board));
     board.move(7, 3, 6, 3);
-    assertTrue(King.isMoveValid(6, 3, 5, 2, board));
+    assertTrue(((King) board.locateKing("BLUE")).isMoveValid(6, 3, 5, 2, board));
     board.move(6, 3, 5, 2);
-    assertFalse(King.isMoveValid(5, 2, 3, 2, board));
-    assertTrue(King.isMoveValid(5, 2, 4, 2, board));
+    assertFalse(((King) board.locateKing("BLUE")).isMoveValid(5, 2, 3, 2, board));
+    assertTrue(((King) board.locateKing("BLUE")).isMoveValid(5, 2, 4, 2, board));
     }
 	
     public void testIsKingChecked(){

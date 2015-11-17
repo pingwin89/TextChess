@@ -7,8 +7,11 @@ public class King extends Figure{
 		setItsClass("King");
 	}
 
-	public static boolean isMoveValid(int x1, int y1, int x2, int y2, Board board){
-		
+	public boolean isMoveValid(int x1, int y1, int x2, int y2, Board board){
+		if((getColor().equals("BLUE"))&&(isCastlingPossible(board)==1)&&(x2==7)&&(y2==1)) return true;
+		if((getColor().equals("BLUE"))&&(isCastlingPossible(board)==2)&&(x2==7)&&(y2==5)) return true;
+		if((getColor().equals("RED"))&&(isCastlingPossible(board)==1)&&(x2==0)&&(y2==1)) return true;
+		if((getColor().equals("RED"))&&(isCastlingPossible(board)==2)&&(x2==0)&&(y2==5)) return true;		
 		if((x1==x2)&&(y1==y2)) return false;
 		if((Math.abs(x1-x2)>1)||(Math.abs(y1-y2)>1)) return false;
 		
@@ -24,7 +27,7 @@ public class King extends Figure{
 					if(figure instanceof Knight) if(Knight.isMoveValid(figure.getX(), figure.getY(), this.getX(), this.getY())) return true;
 					if(figure instanceof Bishop) if(Bishop.isMoveValid(figure.getX(), figure.getY(), this.getX(), this.getY(), board)) return true;
 					if(figure instanceof Queen) if(Queen.isMoveValid(figure.getX(), figure.getY(), this.getX(), this.getY(), board)) return true;
-					if(figure instanceof King) if(King.isMoveValid(figure.getX(), figure.getY(), this.getX(), this.getY(), board)) return true;
+					if(figure instanceof King) if(((King) figure).isMoveValid(figure.getX(), figure.getY(), this.getX(), this.getY(), board)) return true;
 				}
 			}
 		}

@@ -52,7 +52,7 @@ public class MoveValidation {
             return false;
         }   
         
-        if((board.getBoard()[x1][y1] instanceof King)&&!King.isMoveValid(x1,y1,x2,y2,board)){
+        if((board.getBoard()[x1][y1] instanceof King)&&!(((King) board.getBoard()[x1][y1]).isMoveValid(x1,y1,x2,y2,board))){
             Log.normal("Invalid move for the king figure. Try again\n");
             return false;
         }   
