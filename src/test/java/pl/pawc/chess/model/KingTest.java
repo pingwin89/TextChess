@@ -40,29 +40,29 @@ public class KingTest extends TestCase{
     
     public void testIsCastlingPossible(){
     Board board = new Board();
-    assertFalse(((King) board.locateKing("BLUE")).isCastlingPossible(board));
+    assertTrue(((King) board.locateKing("BLUE")).isCastlingPossible(board)==0);
     board.move(7, 1, 5, 2);
     board.move(7, 2, 5, 3);
-    assertTrue(((King) board.locateKing("BLUE")).isCastlingPossible(board));
+    assertTrue(((King) board.locateKing("BLUE")).isCastlingPossible(board)==1);
     Board board2 = new Board();
-    assertFalse(((King) board.locateKing("BLUE")).isCastlingPossible(board2));
-    board.move(7, 5, 5, 5);
-    board.move(7, 6, 5, 6);
-    assertFalse(((King) board.locateKing("BLUE")).isCastlingPossible(board2));
-    board.move(7, 4, 5, 4);
-    assertTrue(((King) board.locateKing("BLUE")).isCastlingPossible(board));
+    assertTrue(((King) board2.locateKing("BLUE")).isCastlingPossible(board2)==0);
+    board2.move(7, 5, 5, 5);
+    board2.move(7, 6, 5, 6);
+    assertTrue(((King) board2.locateKing("BLUE")).isCastlingPossible(board2)==0);
+    board2.move(7, 4, 5, 4);
+    assertTrue(((King) board2.locateKing("BLUE")).isCastlingPossible(board2)==2);
     Board board3 = new Board();
-    assertFalse(((King) board.locateKing("RED")).isCastlingPossible(board));
-    board.move(0, 1, 2, 1);
-    board.move(0, 2, 2, 2);
-    assertTrue(((King) board.locateKing("RED")).isCastlingPossible(board));
+    assertTrue(((King) board3.locateKing("RED")).isCastlingPossible(board3)==0);
+    board3.move(0, 1, 2, 1);
+    board3.move(0, 2, 2, 2);
+    assertTrue(((King) board3.locateKing("RED")).isCastlingPossible(board3)==1);
     Board board4 = new Board();
-    assertFalse(((King) board.locateKing("RED")).isCastlingPossible(board2));
-    board.move(0, 6, 2, 6);
-    board.move(0, 5, 2, 5);
-    assertFalse(((King) board.locateKing("RED")).isCastlingPossible(board2));
-    board.move(0, 4, 2, 4);
-    assertTrue(((King) board.locateKing("RED")).isCastlingPossible(board));
+    assertTrue(((King) board4.locateKing("RED")).isCastlingPossible(board4)==0);
+    board4.move(0, 6, 2, 6);
+    board4.move(0, 5, 2, 5);
+    assertTrue(((King) board4.locateKing("RED")).isCastlingPossible(board4)==0);
+    board4.move(0, 4, 2, 4);
+    assertTrue(((King) board4.locateKing("RED")).isCastlingPossible(board4)==2);
     }
   
 }

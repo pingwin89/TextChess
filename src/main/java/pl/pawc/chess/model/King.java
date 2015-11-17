@@ -30,8 +30,8 @@ public class King extends Figure{
 		}
 		return false;
 	}
-
-	public boolean isCastlingPossible(Board board){
+	//2 - queen side, 1 - the opposite side, 0 - not possible
+	public int isCastlingPossible(Board board){
 		boolean o = (getMoveCounter()==0);
 		switch(getColor()){
 			case "BLUE" : 
@@ -39,26 +39,26 @@ public class King extends Figure{
 				boolean t = (board.getBoard()[7][0].getMoveCounter()==0);
 				boolean u = ((board.getBoard()[7][1]==null)&&(board.getBoard()[7][2]==null));
 				boolean v = ((board.canMoveTo(7,1,"RED").size()==0)&&(board.canMoveTo(7,2,"RED").size()==0));
-			 	if(o&&p&&t&&u&&v) return true;
+			 	if(o&&p&&t&&u&&v) return 1;
 				boolean p2 = (board.getBoard()[7][7]!=null);
 				boolean t2 = (board.getBoard()[7][7].getMoveCounter()==0);
 				boolean u2 = ((board.getBoard()[7][6]==null)&&(board.getBoard()[7][5]==null)&&(board.getBoard()[7][4]==null));
 				boolean v2 = ((board.canMoveTo(7,6,"RED").size()==0)&&(board.canMoveTo(7,5,"RED").size()==0)&&(board.canMoveTo(7,4,"RED").size()==0));
-				if(o&&p2&&t2&&u2&&v2) return true;
+				if(o&&p2&&t2&&u2&&v2) return 2;
 				break;
 			case "RED" :
 				boolean p3 = (board.getBoard()[0][0]!=null);
 				boolean r3 = (board.getBoard()[0][0].getMoveCounter()==0);
 				boolean u3 = ((board.getBoard()[0][1]==null)&&(board.getBoard()[0][2]==null));
-			    boolean v3 = ((board.canMoveTo(0,1,"BLUE").size()==0)&&(board.canMoveTo(0,2,"BLUE").size()==0));
-			    if(p3&&r3&&u3&&v3) return true;
-	            boolean p4 = (board.getBoard()[0][7]!=null);
-                boolean r4 = (board.getBoard()[0][7].getMoveCounter()==0);
-                boolean u4 = ((board.getBoard()[0][6]==null)&&(board.getBoard()[0][5]==null)&&(board.getBoard()[0][4]==null));
-                boolean v4 = ((board.canMoveTo(0,6,"BLUE").size()==0)&&(board.canMoveTo(0,5,"BLUE").size()==0)&&(board.canMoveTo(0, 4, "BLUE").size()==0));
-                if(p4&&r4&&u4&&v4) return true;		 		
+			        boolean v3 = ((board.canMoveTo(0,1,"BLUE").size()==0)&&(board.canMoveTo(0,2,"BLUE").size()==0));
+			        if(p3&&r3&&u3&&v3) return 1;
+	        	        boolean p4 = (board.getBoard()[0][7]!=null);
+		                boolean r4 = (board.getBoard()[0][7].getMoveCounter()==0);
+                		boolean u4 = ((board.getBoard()[0][6]==null)&&(board.getBoard()[0][5]==null)&&(board.getBoard()[0][4]==null));
+		                boolean v4 = ((board.canMoveTo(0,6,"BLUE").size()==0)&&(board.canMoveTo(0,5,"BLUE").size()==0)&&(board.canMoveTo(0, 4, "BLUE").size()==0));
+		                if(p4&&r4&&u4&&v4) return 2;		 		
 		}
-	return false;
+	return 0;
 	}
 
 }
