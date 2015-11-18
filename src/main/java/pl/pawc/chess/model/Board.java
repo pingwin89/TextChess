@@ -60,24 +60,24 @@ public class Board implements Cloneable {
 				if(j==0) Log.normal(Integer.toString(i+1)+" ");
 				if(board[i][j] != null ){
 
-					if(board[i][j] instanceof Pawn) if(board[i][j].getColor().equals("RED")) Log.red("P"); 
-					if(board[i][j] instanceof Pawn) if(board[i][j].getColor().equals("BLUE")) Log.blue("P"); 
-					if(board[i][j] instanceof Knight) if(board[i][j].getColor().equals("RED")) Log.red("K"); 
-					if(board[i][j] instanceof Knight) if(board[i][j].getColor().equals("BLUE")) Log.blue("K"); 
-					if(board[i][j] instanceof Bishop) if(board[i][j].getColor().equals("RED")) Log.red("B"); 
-					if(board[i][j] instanceof Bishop) if(board[i][j].getColor().equals("BLUE")) Log.blue("B"); 
-					if(board[i][j] instanceof Rook) if(board[i][j].getColor().equals("RED")) Log.red("R"); 
-					if(board[i][j] instanceof Rook) if(board[i][j].getColor().equals("BLUE")) Log.blue("R"); 
-					if(board[i][j] instanceof Queen) if(board[i][j].getColor().equals("RED")) Log.red("Q"); 
-					if(board[i][j] instanceof Queen) if(board[i][j].getColor().equals("BLUE")) Log.blue("Q");
-					if(board[i][j] instanceof King) if(board[i][j].getColor().equals("RED")) Log.red("+");  
-					if(board[i][j] instanceof King) if(board[i][j].getColor().equals("BLUE")) Log.blue("+");    
+					if(board[i][j] instanceof Pawn) if(board[i][j].getColor().equals("RED")) Log.red("\u2659"); 
+					if(board[i][j] instanceof Pawn) if(board[i][j].getColor().equals("BLUE")) Log.blue("\u2659"); 
+					if(board[i][j] instanceof Knight) if(board[i][j].getColor().equals("RED")) Log.red("\u2658"); 
+					if(board[i][j] instanceof Knight) if(board[i][j].getColor().equals("BLUE")) Log.blue("\u2658"); 
+					if(board[i][j] instanceof Bishop) if(board[i][j].getColor().equals("RED")) Log.red("\u2657"); 
+					if(board[i][j] instanceof Bishop) if(board[i][j].getColor().equals("BLUE")) Log.blue("\u2657"); 
+					if(board[i][j] instanceof Rook) if(board[i][j].getColor().equals("RED")) Log.red("\u2656"); 
+					if(board[i][j] instanceof Rook) if(board[i][j].getColor().equals("BLUE")) Log.blue("\u2656"); 
+					if(board[i][j] instanceof Queen) if(board[i][j].getColor().equals("RED")) Log.red("\u2655"); 
+					if(board[i][j] instanceof Queen) if(board[i][j].getColor().equals("BLUE")) Log.blue("\u2655");
+					if(board[i][j] instanceof King) if(board[i][j].getColor().equals("RED")) Log.red("\u2654");  
+					if(board[i][j] instanceof King) if(board[i][j].getColor().equals("BLUE")) Log.blue("\u2654");    
 				
 				}
 				else{
-					Log.normal("-");
+					Log.normal(" ");
 				}
-				Log.normal(" ");
+				//Log.normal(" ");
 			}
 		Log.normal("\n");
 		}
@@ -117,6 +117,20 @@ public class Board implements Cloneable {
 	    }
 
 	public void move(int x1, int y1, int x2, int y2){
+		/*if((board[x1][y1] instanceof King)&&((((King) board[x1][y1]).isCastlingPossible(this))==1)&&(x1==7)&&(y1==3)&&(x2==7)&&(y2==1)){
+		board[x2][y2]=board[x1][y1];
+		board[x2][y2].setX(x2);
+		board[x2][y2].setY(y2);
+		board[x1][y1]=null;
+		board[7][2]=board[7][0];
+		board[7][2].setX(7);
+		board[7][2].setY(2);
+		board[7][0]=null;
+		board[x2][y2].incrementMoveCounter();
+		board[7][2].incrementMoveCounter();
+		return;
+		}*/		
+
 		board[x2][y2] = board[x1][y1];
 		board[x1][y1] = null;
 		board[x2][y2].setX(x2);
